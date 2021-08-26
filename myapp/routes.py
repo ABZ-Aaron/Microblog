@@ -1,5 +1,6 @@
 from myapp import app
 from flask import render_template
+from myapp.forms import LoginForm
 # Here we are associating the top level URL (/)
 # with this function.
 @app.route('/')
@@ -18,4 +19,7 @@ def index():
     ]
     return render_template("index.html", title = "home", user = user, posts = posts)
 
-
+@app.route('/login')
+def login():
+    form = LoginForm()
+    return render_template("login.html", title = 'Sign In', form = form)
