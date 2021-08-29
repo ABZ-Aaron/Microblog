@@ -1,0 +1,2 @@
+export FLASK_APP=microblog.py
+python -m flask run 
