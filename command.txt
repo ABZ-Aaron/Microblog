@@ -1,2 +1,5 @@
 export FLASK_APP=microblog.py
 python -m flask run 
+flask db migrate -m "users table"
+flask db upgrade   
+flask db history
