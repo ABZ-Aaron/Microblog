@@ -3,3 +3,4 @@ python -m flask run
 flask db migrate -m "users table"
 flask db upgrade   
 flask db history
+flask shell - start python instance with predifined stuff loaded in
