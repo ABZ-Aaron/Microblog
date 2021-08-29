@@ -1,5 +1,5 @@
 from myapp import app
-from flask import render_template, flash, redirect
+from flask import render_template, flash, redirect, url_for
 from myapp.forms import LoginForm
 # Here we are associating the top level URL (/)
 # with this function.
@@ -32,5 +32,5 @@ def login():
     # This will run all validation checks.
     if form.validate_on_submit():
         flash(f"Login request: {form.username.data}, remember_me: {form.remember_me.data}, password: {form.password.data}")
-        return redirect('/index')
+        return redirect(url_for('index'))
     return render_template("login.html", title = 'Sign In', form = form)
