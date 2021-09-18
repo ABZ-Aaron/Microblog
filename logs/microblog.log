@@ -74,3 +74,7 @@ Traceback (most recent call last):
   File "/Users/aaronwright/Documents/Tech/DataEngineer/Microblog/venv/lib/python3.9/site-packages/wtforms/form.py", line 56, in __iter__
     return iter(itervalues(self._fields))
 AttributeError: 'EditProfileForm' object has no attribute '_fields'
+2021-09-18 21:17:00,407 INFO: Microblog startup [in /Users/aaronwright/Documents/Tech/DataEngineer/Microblog/myapp/__init__.py:57]
+2021-09-18 21:17:31,808 INFO: Microblog startup [in /Users/aaronwright/Documents/Tech/DataEngineer/Microblog/myapp/__init__.py:57]
+2021-09-18 21:35:14,061 INFO: Microblog startup [in /Users/aaronwright/Documents/Tech/DataEngineer/Microblog/myapp/__init__.py:57]
+2021-09-18 21:35:19,605 INFO: Microblog startup [in /Users/aaronwright/Documents/Tech/DataEngineer/Microblog/myapp/__init__.py:57]
