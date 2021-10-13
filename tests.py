@@ -5,10 +5,18 @@ from myapp.models import User, Post
 
 class UserModelCase(unittest.TestCase):
     def setUp(self):
+        """This runs before all tests have complete
+        You can see that it gets SQLAlchemy to use an in memory 
+        sqlite database, then populates it using create_all. this 
+        ensures we don't work on our actual database"""
         app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite://'
         db.create_all()
 
     def tearDown(self):
+        """This runs after all tests have complete
+        You can see that it removes the database session
+        and deletes everything
+        """
         db.session.remove()
         db.drop_all()
 
