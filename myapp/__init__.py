@@ -6,6 +6,7 @@ from flask_sqlalchemy import SQLAlchemy # Used for our database
 from flask_migrate import Migrate # Used for our database
 from flask_login import LoginManager # Manager user's loggin-in state. Provides a remember me functionality
 from config import Config # Importing our class containing config vars
+from flask_mail import Mail
 
 """Create instace of Flask class
 The web server passes all requests from clients to this object
@@ -20,6 +21,7 @@ db = SQLAlchemy(app) # represents database
 migrate = Migrate(app, db) # represents migration database
 login = LoginManager(app) # login instance of the LoginManager class
 login.login_view = 'login' # The view function that handles logins
+mail = Mail(app)
 
 if not app.debug:
     if app.config['MAIL_SERVER']:
