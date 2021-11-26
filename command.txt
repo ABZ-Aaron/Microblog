@@ -17,3 +17,11 @@ export MAIL_PASSWORD=<your-gmail-password>
 # Run shell script 
 
 ./initscript.py
+
+# Save to Requirements file
+
+python3 -m pip freeze > requirements.txt
+
+# Extract from Requirements file
+
+python3 -m pip install -r requirements.txt
