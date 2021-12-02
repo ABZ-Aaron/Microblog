@@ -1,0 +1,53 @@
+# This contains some useful information and commands for this this project
+
+# Before trying to run the application, run the below commands to set debug mode and point flask towards your application:
+
+export FLASK_APP=microblog.py
+export FLASK_DEBUG=1
+
+# Run the application with either of these commands:
+
+flask run
+python3 -m flask run 
+
+# Run this each time the model changes
+
+flask db migrate -m "users table"
+
+# Then run this:
+
+flask db upgrade   
+
+# You can check migration history with this:
+
+flask db history
+flask shell - start python instance with predifined stuff loaded in
+
+# Set below eninvironment variables to recieve emails to Google account. You'll also have to go into your gmail account settings
+# and  make sure it allows for unsecure 3rd part connections/applications
+
+export MAIL_SERVER=smtp.googlemail.com
+export MAIL_PORT=587
+export MAIL_USE_TLS=1
+export MAIL_USERNAME=<your-gmail-username>
+export MAIL_PASSWORD=<your-gmail-password>
+
+# To check an envionmental variable, run something like the below:
+
+echo $MAIL_SERVER
+
+# Create virtual envionment
+
+python3 -m venv venv
+
+# Activate virtual envionment
+
+source venv/bin/activate
+
+# Save pip install packages to Requirements file
+
+python3 -m pip freeze > requirements.txt
+
+# Extract from Requirements file. Make sure virtual envionrment is activated before running this
+
+python3 -m pip install -r requirements.txt
