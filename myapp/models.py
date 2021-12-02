@@ -1,8 +1,11 @@
-from myapp import db, login
+from myapp import db, login, app
 from hashlib import md5
 from datetime import datetime
 from werkzeug.security import check_password_hash, generate_password_hash
 from flask_login import UserMixin
+from time import time
+import jwt
+
 
 followers = db.Table('followers',
     db.Column('follower_id', db.Integer, db.ForeignKey('user.id')),
@@ -58,6 +61,33 @@ class User(UserMixin, db.Model):
         own = Post.query.filter_by(user_id=self.id)
 
         return followed.union(own).order_by(Post.timestamp.desc())
+    
+    def get_reset_password_token(self, expires_in = 600):
+        """Generate a token for resetting password.
+
+        Args:
+            expires_in (int, optional): The token will be rendered invalid past this time. Defaults to 600.
+
+        Returns:
+            string: JWT Token which is a long sequence of characters
+        """
+        return jwt.encode({'reset_password' : self.id, 'exp' : time() + expires_in}, app.config['SECRET_KEY'], algorithm='HS256')
+    
+    @staticmethod
+    def verify_reset_password_token(token):
+        """Verify that signature is valid for reset password link
+
+        Args:
+            token (string): JWT Token which is a long sequence of characters
+
+        Returns:
+            dictionary: Contains payload of token
+        """
+        try:
+          id = jwt.decode(token, app.config['SECRET_KEY'], algorithms=['HS256'])['reset_password']
+        except:
+            return
+        return User.query.get(id)
 
 
 
