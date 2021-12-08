@@ -7,6 +7,7 @@ from flask_migrate import Migrate # Used for our database
 from flask_login import LoginManager # Manager user's loggin-in state. Provides a remember me functionality
 from config import Config # Importing our class containing config vars
 from flask_mail import Mail
+from flask_bootstrap import Bootstrap # This allows us to customise how our app looks
 
 """Create instace of Flask class
 The web server passes all requests from clients to this object
@@ -22,6 +23,11 @@ migrate = Migrate(app, db) # represents migration database
 login = LoginManager(app) # login instance of the LoginManager class
 login.login_view = 'login' # The view function that handles logins
 mail = Mail(app)
+
+# Initialize bootstap. With this initialized, a bootstrap/base.html template becomes available and 
+# can be referenced with the extends clause. We'll use this to provide basic structure to our page. Our 
+# own base template will derive from this (for title, navbar, etc)
+bootstrap = Bootstrap(app) 
 
 if not app.debug:
     if app.config['MAIL_SERVER']:
