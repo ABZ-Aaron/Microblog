@@ -8,7 +8,7 @@ from flask_login import LoginManager # Manager user's loggin-in state. Provides 
 from config import Config # Importing our class containing config vars
 from flask_mail import Mail
 from flask_bootstrap import Bootstrap # This allows us to customise how our app looks
-
+from flask_moment import Moment # This will allow us to use the user's browser to determine their timezone etc
 """Create instace of Flask class
 The web server passes all requests from clients to this object
 for handling. We pass __name__ which represts the name of our
@@ -28,6 +28,9 @@ mail = Mail(app)
 # can be referenced with the extends clause. We'll use this to provide basic structure to our page. Our 
 # own base template will derive from this (for title, navbar, etc)
 bootstrap = Bootstrap(app) 
+
+# This works together with moment.js, so all templates of ours need to include this library.
+moment = Moment(app)
 
 if not app.debug:
     if app.config['MAIL_SERVER']:
