@@ -1,6 +1,8 @@
 import os
+from dotenv import load_dotenv
 
 basedir = os.path.abspath(os.path.dirname(__file__))
+load_dotenv(os.path.join(basedir, '.env'))
 
 # Here we are setting a secret key (this needs to exist for security purposes)
 class Config(object):
